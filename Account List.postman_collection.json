@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "17f88a67-d1f1-4e8b-b763-561debbf556b",
+		"name": "Account List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic Endpoint Tests",
+			"item": [
+				{
+					"name": "GET Data collection for this company ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/firm",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"firm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Specific data for the company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/account",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Change company data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subdomain\": \"sofia-dynamic\",\r\n    \"name\": \"Sofia Dynamic\",\r\n    \"bulstat\": 1245782356,\r\n    \"active\": true,\r\n    \"registration_date\": \"2021-05-18T20:39:35+03:00\",\r\n    \"is_reg_vat\": false,\r\n    \"vat_number\": \"BG1245782356\",\r\n    \"town\": \"Sofia\",\r\n    \"postcode\": 1000,\r\n    \"address\": \"Dobrinowva skala 21\",\r\n    \"mol\": \"Dobrin Skalata\",\r\n    \"email\": \"nas2123@abv.bg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/firm",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"firm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"town\": \"{{town}}\",\r\n  \"address\": \"{{address}}\",\r\n  \"bulstat\": \"{{bulstat}}\",\r\n  \"is_reg_vat\": \"{{true}}\",\r\n  \"vat_number\": \"{{vat_number}}\",\r\n  \"mol\": \"{{mol}}\",\r\n  \"is_person\": \"{{is_person}}\",\r\n  \"egn\": \"{{egn}}\",\r\n  \"country\": \"{{country}}\",\r\n  \"code\": \"{{code}}\",\r\n  \"office\": \"{{office}}\",\r\n  \"name_en\": \"{{name_en}}\",\r\n  \"town_en\": \"{{town_en}}\",\r\n  \"address_en\": \"{{address_en}}\",\r\n  \"mol_en\": \"{{mol_en}}\",\r\n  \"country_en\": \"{{country_en}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients/7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer change",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"name\": \"BluePine\",\r\n  \"town\": \"Plovdiv\",\r\n  \"address\": \"Half Moon  22\",\r\n  \"bulstat\": \"112233445588\",\r\n  \"is_reg_vat\": false,\r\n  \"vat_number\": \"BG112233445588\",\r\n  \"mol\": \"Niki Vasilev\",\r\n  \"is_person\": false,\r\n  \"egn\": 8210129433,\r\n  \"country\": \"Spain\",\r\n  \"code\": \"Client-79832\",\r\n  \"office\": \"Milenium, central office\",\r\n  \"name_en\": \"BluePine\",\r\n  \"town_en\": \"Plovdiv\",\r\n  \"address_en\": \"Half Moon  21\",\r\n  \"mol_en\": \"Niki Vasilev\",\r\n  \"country_en\": \"Spain\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients/7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients/11",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "GET Client Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients/1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Client with Missing Mol Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Prima\",\r\n  \"town\": \"Sofia\",\r\n  \"address\": \"Strossmayer 21\",\r\n  \"bulstat\": \"124578235689\",\r\n  \"is_reg_vat\": false,\r\n  \"vat_number\": \"BG124578235689\",\r\n  \"mol\": \"\",\r\n  \"is_person\": false,\r\n  \"egn\": 8210129456,\r\n  \"country\": \"Germany\",\r\n  \"code\": \"Client-89561\",\r\n  \"office\": \"MainB, central office\",\r\n  \"name_en\": \"Prima\",\r\n  \"town_en\": \"Sofia\",\r\n  \"address_en\": \"Strossmayer 21\",\r\n  \"mol_en\": \"Georgi Jordanov\",\r\n  \"country_en\": \"Germany\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client with Missing Company Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Missing Company Name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"name\": \"\",\r\n  \"town\": \"Plovdiv\",\r\n  \"address\": \"Half Moon  21\",\r\n  \"bulstat\": \"112233445588\",\r\n  \"is_reg_vat\": false,\r\n  \"vat_number\": \"BG112233445588\",\r\n  \"mol\": \"Niki Vasilev\",\r\n  \"is_person\": false,\r\n  \"egn\": 8210129433,\r\n  \"country\": \"Spain\",\r\n  \"code\": \"Client-79832\",\r\n  \"office\": \"Milenium, central office\",\r\n  \"name_en\": \"BluePine\",\r\n  \"town_en\": \"Plovdiv\",\r\n  \"address_en\": \"Half Moon  21\",\r\n  \"mol_en\": \"Niki Vasilev\",\r\n  \"country_en\": \"Spain\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients/7",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Client  Missing Address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Missing address\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Prima\",\r\n  \"town\": \"Sofia\",\r\n  \"address\": \"\",\r\n  \"bulstat\": \"124578235689\",\r\n  \"is_reg_vat\": false,\r\n  \"vat_number\": \"BG124578235689\",\r\n  \"mol\": \"Georgi Jordanov\",\r\n  \"is_person\": false,\r\n  \"egn\":  8210129456,\r\n  \"country\": \"Germany\",\r\n  \"code\": \"Client-89561\",\r\n  \"office\": \"MainB, central office\",\r\n  \"name_en\": \"Prima\",\r\n  \"town_en\": \"Sofia\",\r\n  \"address_en\": \"Strossmayer 21\",\r\n  \"mol_en\": \"Georgi Jordanov\",\r\n  \"country_en\": \"Germany\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.inv.bg/v3/clients",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inv",
+								"bg"
+							],
+							"path": [
+								"v3",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJtSUQiOiI5MjcyNSIsInVzZXJJRCI6IjEiLCJzY29wZSI6WyJhZG1pbiJdLCJ1bnJlc3RyaWN0ZWQiOnRydWUsInRva2VuSUQiOiIyIn0.IbpxTxKD3uYSgvjwMWGWjzn98Rl6MWN79pjXROBeLDg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 600ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(600);",
+					"});"
+				]
+			}
+		}
+	]
+}
